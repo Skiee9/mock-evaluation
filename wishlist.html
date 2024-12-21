@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wishlist</title>
+    <style>
+         body{
+            font-family: Arial, sans-serif;
+        }
+        .navbar{
+            background-color: #333;
+            color:white;
+            padding:1rem;
+            text-align: center;
+        }
+        .productGrid{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:20px;
+            margin:20px;
+        }
+        .card{
+            border:1px solid black;
+            padding:14px;
+            text-align:center;
+        }
+        .card img{
+            max-width: 100%;
+            height:100px;
+            object-fit: cover;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">Wishlist</div>
+    <div class="product-grid" id="wishlistGrid"></div>
+    <script>
+        function loadWishlist(){
+            const wishlistGrid = document.getElementById("wishlistGrid");
+            const wishlist = JSON.parse(localStorage.getItem("wishlistProduct"));
+
+            wishlistGrid.innerHTML='';
+            wishlist.forEach(item => {
+                const card=document.createElement('div');
+                card.className="card";
+
+                card.innerHTML=`
+                <img src="${item.image}" alt="${image.title}">
+                <h3>${item.title}</h3>
+                <p>${item.price}</h3>
+                    `;
+
+                    wishlistGrid.appendChild(card);
+
+                    loadWishlist();
+
+        });
+    }
+    </script>
+</body>
+</html>
